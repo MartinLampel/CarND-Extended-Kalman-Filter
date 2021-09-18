@@ -1,7 +1,7 @@
 
 [image1]: ./images/kalmanequations.png "Kalman filter equations"
 [image2]: ./images/motion_model.png "Linear motion model"
-[image3]: ./images/covariance.png "Covariance matrix Q"
+[image3]: ./images/q.png "Covariance matrix Q"
 
 
 # Extended Kalman Filter Project Starter Code
@@ -98,6 +98,12 @@ For the covariance matrix Q is
 
 ![alt text][image3]
 
+The observation model for the laser H is 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mathbf{H}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&&space;0&space;&&space;0\\&space;0&space;&&space;1&&space;0&space;&&space;0&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbf{H}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&&space;0&space;&&space;0\\&space;0&space;&&space;1&&space;0&space;&&space;0&space;\end{pmatrix}" title="\mathbf{H} = \begin{pmatrix} 1 & 0& 0 & 0\\ 0 & 1& 0 & 0 \end{pmatrix}" /></a>
+
+For the radar measurements the same state transition model is used as for the laser measurements. 
+The 
 
 ## Results 
 
