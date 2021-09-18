@@ -2,7 +2,8 @@
 [image1]: ./images/kalmanequations.png "Kalman filter equations"
 [image2]: ./images/motion_model.png "Linear motion model"
 [image3]: ./images/q.png "Covariance matrix Q"
-
+[image4]: ./images/hradar.png "H for radar measurements"
+[image5]: ./images/hradar_lin.png "Linearized observation model for radar measurements"
 
 # Extended Kalman Filter Project Starter Code
 Self-Driving Car Engineer Nanodegree Program
@@ -102,8 +103,17 @@ The observation model for the laser H is
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbf{H}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&&space;0&space;&&space;0\\&space;0&space;&&space;1&&space;0&space;&&space;0&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbf{H}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&&space;0&space;&&space;0\\&space;0&space;&&space;1&&space;0&space;&&space;0&space;\end{pmatrix}" title="\mathbf{H} = \begin{pmatrix} 1 & 0& 0 & 0\\ 0 & 1& 0 & 0 \end{pmatrix}" /></a>
 
+The observation model for the radar measurements is
+
+![alt text][image4]
+
+This observation model is nonlinear. To use these measurements with the Kalman filter, we need to linearize the observation model h, which 
+leads to the extended Kalman filter. To deal with this non-linearity, we use a Taylor series expansion. From this Taylor series expansions, only the 
+first order is evaluated. The nonlinear model is derived with respect to each state variable, which yields a Jacobian matrix and is used as the linearized observation model for the radar measurements. 
+
+![alt text][image5]
+
 For the radar measurements the same state transition model is used as for the laser measurements. 
-The 
 
 ## Results 
 
