@@ -4,6 +4,8 @@
 [image3]: ./images/q.png "Covariance matrix Q"
 [image4]: ./images/hradar.png "H for radar measurements"
 [image5]: ./images/hradar_lin.png "Linearized observation model for radar measurements"
+[image6]: ./images/dataset1.png "Results with first data set"
+[image7]: ./images/dataset2.png "Results with second data set"
 
 # Extended Kalman Filter Project Starter Code
 Self-Driving Car Engineer Nanodegree Program
@@ -115,13 +117,38 @@ first order is evaluated. The nonlinear model is derived with respect to each st
 
 For the radar measurements the same state transition model is used as for the laser measurements. 
 
+I tried to prevent unneccessary computations by using intermediate results. An example can be found in the lines 139-149
+where the covariance matrix Q is computed. To prevent the creation of the identity matrix each time in the update step, 
+the idenity matrix is initialized in the `init` method. 
+
+If the `ProcessMeasurement` method called for the first time, the state vector and matrix P are initialized with data depending on the sensor type. 
+
 ## Results 
+
+
+Here are images of the simulator for both datasets:
+
+#### 1. Dataset
+
+![alt text][image6]
+
+#### 2. Dataset
+
+![alt text][image7]
+
+
+The RMSE should be less or equal to [0.11, 0.11, 0.52, 0.52]. With the usage of both sensor types for the dataset 1 and dataset 2 we fullfill
+the criteria. 
+I tested how well the Kalman filter perform when we use only one sensor of the first data set. By using only one sensor we meet not the specified
+criteria. I think the Kalman filter can fullfill the given criteria with only sensor when there are more measurements available. 
+However, the Kalman filter is not far away from RMSE criteria, depending on the type of application the positions and velocities maybe good enough.
+
 
 | Dataset | Sensors         		|    RMSE x | RMSE y | RMSE vx | RMSE vy | 
 |:---------------------:|:---------------------:|:---------------------:|:---------------------:|:---------------------:|:---------------------:|
 | 1| Laser & Radar | 0.0973 | 0.0855 | 0.4513 | 0.4399 |
 | 2| Laser & Radar | 0.0740 | 0.0964 | 0.4466 | 0.4756 |
 | 1| Laser only | 0.1473| 0.1153 | 0.6383 | 0.5346 |
-| 4| Radar only  | 0.2302 | 0.3464 | 0.5835 | 0.8040 |
+| 1| Radar only  | 0.2302 | 0.3464 | 0.5835 | 0.8040 |
 
 
